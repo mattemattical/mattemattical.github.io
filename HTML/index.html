@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Algal Carbon Capturing Tool</title>
+  <link rel="stylesheet" href="/CSS/main.css">
+  <link rel="stylesheet" href="/CSS/navbar.css">
+  <link rel="stylesheet" href="/lib/w3schools28.css">
+  <script src="/JS/bootstrap.js"></script>
+  <link rel="icon" href="/Images/falcalogo.png">
+
+  <!-- Bootstrap 4.5 CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
+  <!-- Bootstrap JS Requirements -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+
+</head>
+
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Reminder</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Before using the device, please read the manual carefully. Refer to the manual page</p>
+        </div>
+        <div class="modal-footer">
+          <!-- Make sure to include the 'nothanks' class on the buttons -->
+          <button class="btn btn-default nothanks" data-dismiss="modal" aria-hidden="true">Don't Show Me This Again</button>
+          <a href="/HTML/manual.html" class="btn btn-primary">Go to Manual Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark dark" style="padding-left: 20px;">
+    <div class="container-fluid">
+      <div class="line padding-20">
+        <a class="navbar-brand" href="/HTML/index.html"> <img src="/Images/falcalogo (Custom).png"
+            alt="falcalogo">&nbsp AC<sup>2</sup>T </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+          aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse " id="navbarColor02">
+        <ul class="navbar-nav me-auto navbar-nav-scroll">
+          <li class="nav-item">
+            <a class="nav-link active" href="/HTML/">Dashboard
+              <!-- <span class="visually-hidden">(current)</span> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#graphs">Graphs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Status</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Control</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Help
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <a class="dropdown-item" href="/HTML/manual.html">Manual</a>
+              <a class="dropdown-item" href="/HTML/faqs.html">FAQs</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/HTML/aboutus.html">About Us</a>
+        
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div style="background: url(/Images/bgpol.jpg); margin-top: 60px; margin-bottom: 0; height: 600px;" class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center">
+      <h1 class="display-3 font-weight-bold" style="margin: 100px 0 0 0;">Welcome to Dashboard</h1>
+      <p class="font-italic mb-0">Algal Carbon Capturing Tool.</p>
+    </div>
+  </div>
+
+  <div class="bg-light py-5" id="graphs">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col-lg-5">
+          <h2 >Graphs</h2>
+          <p class="font-italic">Following graphs are the graphical view of data</p>
+        </div>
+      </div>
+      <div class="row mb-5 justify-content-center">
+        <div class="col-lg-5"> 
+          <div class="card">
+            <div class="card-header">Graph 1</div> 
+            <!-- iframe width="540" height="260" -->
+          <iframe width="445" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/1510102/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+          </div>
+          <p class="text-center">description</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Graph 2</div>
+            <iframe width="445" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+          </div>
+          <p class="text-center">description</p>
+        </div>
+      </div>
+      
+      <!-- next row -->
+      <div class="row mb-5 justify-content-center">
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Graph 3</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+          </div>
+          <p class="text-center">description</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Graph 4</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+          </div>
+          <p class="text-center">description</p>
+        </div>
+      </div>
+
+      <!-- next row -->
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Graph 5</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/935349/widgets/128980"></iframe>
+          </div>
+          <p class="text-center">description</p>
+        </div>
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header">Graph 6</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/935349/widgets/128980"></iframe>
+          </div>
+          <p class="text-center">description</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <footer class="bg-light pb-5">
+    <div class="container text-center">
+      <img src="/Images/falcalogo (Custom).png">
+      <p class="font-italic text-muted mb-0">&copy; Team FALCA </p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    $(window).on('load', function() {
+        $('#myModal').modal('show');
+    });
+  </script>
+
+</body>
+
+</html>

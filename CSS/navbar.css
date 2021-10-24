@@ -1,0 +1,13 @@
+.dark {
+  background-color: #008080;
+}
+
+.line {
+  border-right: 2px solid rgb(255, 255, 255);
+}
+
+.padding-20 {
+  padding-right: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
+}

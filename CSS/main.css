@@ -1,0 +1,96 @@
+/* body {
+  background-image: url(/Images/bgpol.jpg);
+} */
+
+.main-content {
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+  margin: 5em auto;
+  display: flex;
+}
+.company__info {
+  background-color: #008080;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+.fa-android {
+  font-size: 3em;
+}
+
+.margin-50 {
+  margin-left: 50px;
+}
+
+/* FOR FAQ PAGE */
+
+.faq-text {
+  margin: 30px;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e7eaed;
+  border-radius: 0;
+}
+
+.accordion .card {
+  margin-bottom: 0.75rem;
+  box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
+  border-radius: 0.25rem;
+}
+.accordion .card .card-header {
+  background-color: transparent;
+  border: none;
+  padding: 2rem;
+}
+.grid-margin {
+  margin-bottom: 0.625rem;
+}
+.accordion .card .card-header a[aria-expanded="true"]:before {
+  content: "\F374";
+}
+.accordion .card .card-header a:before {
+  font-family: "Material Design Icons";
+  position: absolute;
+  right: 7px;
+  top: 0;
+  font-size: 18px;
+  display: block;
+}
+.accordion .card .card-header a[aria-expanded="false"]:before {
+  content: "\F415";
+}
+
+/* ABOUT US PAGE */
+
+.social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
+}
