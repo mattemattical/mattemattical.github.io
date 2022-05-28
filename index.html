@@ -25,6 +25,72 @@
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
 
 </head>
+<style>
+  .buttonON {
+  display: inline-block !important;
+  padding: 5px 10px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  outline: none !important;
+  color: #fff !important;
+  background-color: #4CAF50 !important;
+  border: none !important;
+  border-radius: 15px !important;
+  box-shadow: 0 5px #999 !important;
+}
+
+.buttonON:hover {background-color: #3e8e41 !important}
+.buttonON:active {
+  background-color: #3e8e41 !important;
+  box-shadow: 0 1px #666 !important;
+  transform: translateY(4px) !important;
+}
+
+.buttonOFF {
+  display: inline-block !important;
+  padding: 5px 10px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  outline: none !important;
+  color: #fff !important;
+  background-color: #e74c3c !important;
+  border: none !important;
+  border-radius: 15px !important;
+  box-shadow: 0 5px #999 !important;
+}
+
+.buttonOFF:hover {background-color: #c0392b !important}
+.buttonOFF:active {
+  background-color: #c0392b !important;
+  box-shadow: 0 1px #666 !important;
+  transform: translateY(4px) !important;
+}
+
+.text {
+  text-align: center;
+  font-size: 18px;
+  width: 200px;
+  height: 22px;
+  border: 3px solid #9b59b6;
+  border-radius: 5px;
+  padding: 3px;
+  -webkit-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  -moz-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  -ms-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  -o-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.text:focus {
+  border: 3px solid #8e44ad;
+  box-shadow: 0 0 7px #8e44ad;
+  outline: none;
+}
+</style>
 
 <body>
   <!-- Modal -->
@@ -198,8 +264,8 @@
                 <option value="5">Light Panel</option>
                 <option value="6">Operational Control</option>
               </select></th>
-              <th><button type="button" id="relayon" class="btn btn-primary" >ON</button></th>
-              <th><button type="button" id="relayoff" class="btn btn-danger" >OFF</button></th>
+              <th><button type="button" id="relayon" class="buttonON" >ON</button></th>
+              <th><button type="button" id="relayoff" class="buttonOFF" >OFF</button></th>
               <th> Status:&nbsp;<span id="relaystate">Please wait...</span></th>
             </tr>
           </thead>
