@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>Dashboard | Algal Carbon Capturing Tool</title>
-  <link rel="stylesheet" href="/CSS/main.css">
-  <link rel="stylesheet" href="/CSS/navbar.css">
   <link rel="icon" href="/Images/falcalogo.png">
 
   <!-- Bootstrap 4.5 CSS-->
@@ -20,74 +18,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
-  <style>
-    
-.buttonON {
-  display: inline-block !important;
-  padding: 5px 10px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  outline: none !important;
-  color: #fff !important;
-  background-color: #4CAF50 !important;
-  border: none !important;
-  border-radius: 15px !important;
-  box-shadow: 0 5px #999 !important;
-}
-
-.buttonON:hover {background-color: #3e8e41 !important}
-.buttonON:active {
-  background-color: #3e8e41 !important;
-  box-shadow: 0 1px #666 !important;
-  transform: translateY(4px) !important;
-}
-
-.buttonOFF {
-  display: inline-block !important;
-  padding: 5px 10px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  outline: none !important;
-  color: #fff !important;
-  background-color: #e74c3c !important;
-  border: none !important;
-  border-radius: 15px !important;
-  box-shadow: 0 5px #999 !important;
-}
-
-.buttonOFF:hover {background-color: #c0392b !important}
-.buttonOFF:active {
-  background-color: #c0392b !important;
-  box-shadow: 0 1px #666 !important;
-  transform: translateY(4px) !important;
-}
-
-.text {
-  text-align: center;
-  font-size: 18px;
-  width: 200px;
-  height: 22px;
-  border: 3px solid #9b59b6;
-  border-radius: 5px;
-  padding: 3px;
-  -webkit-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  -moz-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  -ms-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  -o-transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-}
-
-.text:focus {
-  border: 3px solid #8e44ad;
-  box-shadow: 0 0 7px #8e44ad;
-  outline: none;
-}
-
-  </style>
+  <link rel="stylesheet" href="/CSS/main.css">
+  <link rel="stylesheet" href="/CSS/navbar.css">
 
 </head>
 
@@ -284,7 +216,7 @@
 
     document.getElementById('relayon').addEventListener('click', function() {
 				var fields = document.getElementById('fields').value;
-				var url = "http://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=1"
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=1"
 				$.getJSON(url, function(data) {
 					console.log(data);
 				});
@@ -292,7 +224,7 @@
 		
 		document.getElementById('relayoff').addEventListener('click', function() {
 				var fields = document.getElementById('fields').value;
-				var url = "http://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=0"
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=0"
 				$.getJSON(url, function(data) {
 					console.log(data);
 				});
