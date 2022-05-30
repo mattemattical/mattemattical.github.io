@@ -38,6 +38,7 @@
           <p>Before using the device, please read the manual carefully. Refer to the manual page</p>
         </div>
         <div class="modal-footer">
+          
           <!-- Make sure to include the 'nothanks' class on the buttons -->
           <div class="checkbox"><label><input type="checkbox"> Don't show this again!</label></div>
           <a href="/HTML/manual.html" class="btn btn-primary">Go to Manual Page</a>
@@ -48,19 +49,17 @@
 
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark dark" style="padding-left: 20px;">  
     <div class="container-fluid">
-      <div class="line padding-20">
-        <a class="navbar-brand" href="/HTML/index.html"> <img src="/Images/falcalogo (Custom).png"
+        <a class="navbar-brand" href="/index.html"> <img src="/Images/falcalogo (Custom).png"
             alt="falcalogo">&nbsp AC<sup>2</sup>T </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01"
           aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon">
+            </span>
         </button>
-      </div>
-      <div class="collapse navbar-collapse " id="navbarColor02">
-        <ul class="navbar-nav me-auto navbar-nav-scroll">
+      <div class="navbar-collapse collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="/HTML/index.html">Dashboard
-              <!-- <span class="visually-hidden">(current)</span> -->
+            <a class="nav-link active" href="/index.html">Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -69,8 +68,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#control">Control</a>
           </li>
-        </ul>
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -89,10 +86,12 @@
     </div>
   </nav>
 
-  <div style="background: url(/Images/bgpol.jpg); margin-top: 60px; margin-bottom: 0; height: 600px;" class="jumbotron bg-cover text-white">
+
+  <div style="background: url(/Images/bgpol.jpg);height: 100vh; background-repeat: no-repeat; margin-bottom: 0%;" class="jumbotron bg-cover text-white">
     <div class="container py-5 text-center">
-      <h1 class="display-3 font-weight-bold" style="margin: 100px 0 0 0;">Welcome to Dashboard</h1>
-      <p class="font-italic mb-0">Algal Carbon Capturing Tool.</p>
+      <h1 class="display-2 font-weight-bold" style="margin: 100px 0 0 0;">Welcome to Dashboard</h1>
+      <br>
+      <p class="font-italic mb-1 dashp">Algal Carbon Capturing Tool.</p>
     </div>
   </div>
 
@@ -105,35 +104,34 @@
         </div>
       </div>
       <div class="row mb-5 justify-content-center">
-        <div class="col-lg-5"> 
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;"> 
           <div class="card">
-            <div class="card-header"><b>Graph 1:</b> Humidity</div> 
+            <div class="card-header float-left"><b>Graph 1:</b> Humidity</div> 
             <!-- iframe width="540" height="260" -->
           <iframe width="445" height="260" style="border: 1px solid #cccccc;"
             src="https://thingspeak.com/channels/1510102/charts/1?bgcolor=%23ffffff&color=%23ffff00&dynamic=true&results=10&title=Humidity&type=line"></iframe>
           </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
             <div class="card-header"><b>Graph 2:</b> Water Temperature</div>
             <iframe width="445" height="260" style="border: 1px solid #cccccc;"
               src="https://thingspeak.com/channels/1510102/charts/2?bgcolor=%23ffffff&color=%232596be&dynamic=true&results=10&title=Water+Temperature&type=line"></iframe>
-
           </div>
         </div>
       </div>
-      
+        
       <!-- next row -->
       <div class="row mb-5 justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-xs-5" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
-            <div class="card-header"><b>Graph 3:</b> Room Temperature</div>
-            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+            <div class="card-header float-left"><b>Graph 3:</b> Room Temperature</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc; align-items: center;"
               src="https://thingspeak.com/channels/1510102/charts/3?bgcolor=%23ffffff&color=%23e83845&dynamic=true&results=10&title=Room+Temperature&type=line"></iframe>
 
           </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-xs-5" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
             <div class="card-header"><b>Graph 4:</b> Light Intensity</div>
             <iframe width="440" height="260" style="border: 1px solid #cccccc;"
@@ -145,14 +143,14 @@
 
       <!-- next row -->
       <div class="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
-            <div class="card-header"><b>Graph 5:</b> Turbidity</div>
+            <div class="card-header float-center"><b>Graph 5:</b> Turbidity</div>
             <iframe width="440" height="260" style="border: 1px solid #cccccc;"
               src="https://thingspeak.com/channels/1510102/charts/5?bgcolor=%23ffffff&color=%23808080&dynamic=true&results=10&title=Turbidity&type=line"></iframe>
           </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
             <div class="card-header"><b>Graph 6:</b> Concentration</div>
             <iframe width="440" height="260" style="border: 1px solid #cccccc;"
@@ -163,7 +161,7 @@
 
       <!-- next row -->
       <div class="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
           <div class="card">
             <div class="card-header"><b>Graph 7:</b> pH level</div>
             <iframe width="440" height="260" style="border: 1px solid #cccccc;"
@@ -183,24 +181,41 @@
         </div>
       </div>
       <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th><select id="fields" class="form-control" aria-label="Default select example">
-                <option selected>Select Actuator</option>
-                <option value="1">Solenoid Water Source</option>
-                <option value="2">Solenoid Harvesting</option>
-                <option value="3">Solenoid Sprinkler</option>
-                <option value="4">Water Pump Water Source</option>
-                <option value="5">Light Panel</option>
-                <option value="6">Operational Control</option>
-              </select></th>
-              <th><button type="button" id="relayon" class="buttonON" >ON</button></th>
-              <th><button type="button" id="relayoff" class="buttonOFF" >OFF</button></th>
-              <th> Status:&nbsp;<span id="relaystate">Please wait...</span></th>
-            </tr>
-          </thead>
-        </table>
+        <span><b>Operational Control: </b></span>
+        <div class="row">
+          <div class="col-sm-8">
+              <select id="algae" class="form-control algae" aria-label="Default select example">
+              <option selected>Select Algae...</option>
+              <option value="0">Spirulina</option>
+              <option value="1">Ellipsoidea</option>
+              <option value="2">Vulgaris</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" id="confirm" class="buttonON float-center" >Confirm</button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-6">
+            <select id="fields" class="form-control" aria-label="Default select example">
+              <option selected>Select Actuator...</option>
+              <option value="1">Solenoid Water Source</option>
+              <option value="2">Solenoid Harvesting</option>
+              <option value="3">Solenoid Sprinkler</option>
+              <option value="4">Water Pump Water Source</option>
+              <option value="5">Light Panel</option>
+            </select>
+          </div>
+          <div class="col-sm-2 float-right">
+            <button type="button" id="relayon" class="buttonON float-right" >ON</button>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" id="relayoff" class="buttonOFF" >OFF</button>
+          </div>
+          <div class="col-sm-2">
+            <b>Status:&nbsp;<span id="relaystate">Please wait...</span></b>
+          </div>
       </div>
   <footer class="bg-light pb-5">
     <div class="container text-center">
@@ -213,6 +228,14 @@
     $(window).on('load', function() {
         $('#myModal').modal('show');
     });
+
+    document.getElementById('confirm').addEventListener('click', function() {
+				var fields = document.getElementById('algae').value;
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field6="+ algae
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+			});
 
     document.getElementById('relayon').addEventListener('click', function() {
 				var fields = document.getElementById('fields').value;
@@ -233,7 +256,7 @@
 			setInterval(function() {
 			// Call a function repetatively with 15 Second interval
 				getThingSpeakLightState();
-			}, 15000);
+			}, 5000);
 			
 			function getThingSpeakLightState() {
 				var fields = document.getElementById('fields').value;
