@@ -1,0 +1,9 @@
+.dark {
+  background-color: #008080;
+}
+
+.padding-20 {
+  padding-right: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
+}

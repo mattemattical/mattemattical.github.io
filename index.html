@@ -18,6 +18,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+  <script src="/js/jQueryCookie.js"></script>
   <link rel="stylesheet" href="/CSS/main.css">
   <link rel="stylesheet" href="/CSS/navbar.css">
 
@@ -40,8 +41,8 @@
         <div class="modal-footer">
           
           <!-- Make sure to include the 'nothanks' class on the buttons -->
-          <div class="checkbox"><label><input type="checkbox"> Don't show this again!</label></div>
-          <a href="/HTML/manual.html" class="btn btn-primary">Go to Manual Page</a>
+          <button class="btn btn-default nothanks" data-dismiss="modal" aria-hidden="true">Don't Show Me This Again</button>
+          <a href="/HTML/manual.html" class="btn btn-primary nothanks">Go to Manual Page</a>
         </div>
       </div>
     </div>
@@ -225,9 +226,27 @@
   </footer>
 
   <script type="text/javascript">
-    $(window).on('load', function() {
-        $('#myModal').modal('show');
-    });
+      // Delayed Modal Display + Cookie On Click
+      $(document).ready(function() {
+  
+  // If no cookie with our chosen name (e.g. no_thanks)...
+  if ($.cookie("no_thanks") == null) {
+
+    // Show the modal, with delay func.
+    $('#myModal').appendTo("body");
+    function show_modal(){
+      $('#myModal').modal('show');
+    }
+
+    // Set delay func. time in milliseconds
+    window.setTimeout(show_modal, 3000);
+    }
+
+  // On click of specified class (e.g. 'nothanks'), trigger cookie, which expires in 100 years
+  $(".nothanks").click(function() {
+    $.cookie('no_thanks', 'true', { expires: 36500, path: '/' });
+  });
+});
 
     document.getElementById('confirm').addEventListener('click', function() {
 				var fields = document.getElementById('algae').value;
