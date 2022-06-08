@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>Dashboard | Algal Carbon Capturing Tool</title>
+  <link rel="icon" href="/Images/falcalogo.png">
+
+  <!-- Bootstrap 4.5 CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  
+  <!-- Bootstrap JS Requirements -->
+  <script src="/JS/jQuery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+
+  <link rel="stylesheet" href="/CSS/main.css">
+  <link rel="stylesheet" href="/CSS/navbar.css">
+  <script>
+    (function (factory) {
+      if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['jquery'], factory);
+      } else if (typeof exports === 'object') {
+        // CommonJS
+        factory(require('jquery'));
+      } else {
+        // Browser globals
+        factory(jQuery);
+      }
+    }(function ($) {
+
+      var pluses = /\+/g;
+
+      function encode(s) {
+        return config.raw ? s : encodeURIComponent(s);
+      }
+
+      function decode(s) {
+        return config.raw ? s : decodeURIComponent(s);
+      }
+
+      function stringifyCookieValue(value) {
+        return encode(config.json ? JSON.stringify(value) : String(value));
+      }
+
+      function parseCookieValue(s) {
+        if (s.indexOf('"') === 0) {
+          // This is a quoted cookie as according to RFC2068, unescape...
+          s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        }
+
+        try {
+          // Replace server-side written pluses with spaces.
+          // If we can't decode the cookie, ignore it, it's unusable.
+          // If we can't parse the cookie, ignore it, it's unusable.
+          s = decodeURIComponent(s.replace(pluses, ' '));
+          return config.json ? JSON.parse(s) : s;
+        } catch(e) {}
+      }
+
+      function read(s, converter) {
+        var value = config.raw ? s : parseCookieValue(s);
+        return $.isFunction(converter) ? converter(value) : value;
+      }
+
+      var config = $.cookie = function (key, value, options) {
+
+        // Write
+
+        if (value !== undefined && !$.isFunction(value)) {
+          options = $.extend({}, config.defaults, options);
+
+          if (typeof options.expires === 'number') {
+            var days = options.expires, t = options.expires = new Date();
+            t.setTime(+t + days * 864e+5);
+          }
+
+          return (document.cookie = [
+            encode(key), '=', stringifyCookieValue(value),
+            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+            options.path    ? '; path=' + options.path : '',
+            options.domain  ? '; domain=' + options.domain : '',
+            options.secure  ? '; secure' : ''
+          ].join(''));
+        }
+
+        // Read
+
+        var result = key ? undefined : {};
+
+        // To prevent the for loop in the first place assign an empty array
+        // in case there are no cookies at all. Also prevents odd result when
+        // calling $.cookie().
+        var cookies = document.cookie ? document.cookie.split('; ') : [];
+
+        for (var i = 0, l = cookies.length; i < l; i++) {
+          var parts = cookies[i].split('=');
+          var name = decode(parts.shift());
+          var cookie = parts.join('=');
+
+          if (key && key === name) {
+            // If second argument (value) is a function it's a converter...
+            result = read(cookie, value);
+            break;
+          }
+
+          // Prevent storing a cookie that we couldn't decode.
+          if (!key && (cookie = read(cookie)) !== undefined) {
+            result[name] = cookie;
+          }
+        }
+
+        return result;
+      };
+
+      config.defaults = {};
+
+      $.removeCookie = function (key, options) {
+        if ($.cookie(key) === undefined) {
+          return false;
+        }
+
+        // Must not alter options, thus extending a fresh object...
+        $.cookie(key, '', $.extend({}, options, { expires: -1 }));
+        return !$.cookie(key);
+      };
+
+    }));
+
+  </script>
+
+</head>
+
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Reminder</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Before using the device, please read the manual carefully. Refer to the manual page</p>
+        </div>
+        <div class="modal-footer">
+          
+          <!-- Make sure to include the 'nothanks' class on the buttons -->
+          <button class="btn btn-default nothanks" data-dismiss="modal" aria-hidden="true">Don't Show Me This Again</button>
+          <a href="/HTML/manual.html" class="btn btn-primary nothanks">Go to Manual Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark dark" style="padding-left: 20px;">  
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/HTML/dashboard.html"> <img src="/Images/falcalogo (Custom).png"
+            alt="falcalogo">&nbsp AC<sup>2</sup>T </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01"
+          aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            </span>
+        </button>
+      <div class="navbar-collapse collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/HTML/dashboard.html">Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/HTML/dashboard.html#graphs">Graphs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/HTML/dashboard.htmlcontrol">Control</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Help
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <a class="dropdown-item" href="/HTML/manual.html">Manual</a>
+              <a class="dropdown-item" href="/HTML/faqs.html">FAQs</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/HTML/aboutus.html">About Us</a>
+              <a class="dropdown-item" href="/HTML/aboutus.html">Contact Us</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div style="background: url(/Images/bgpol.jpg);height: 100vh; background-repeat: no-repeat; margin-bottom: 0%;" class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center">
+      <h1 class="display-2 font-weight-bold" style="margin: 100px 0 0 0;">Welcome to Dashboard</h1>
+      <br>
+      <p class="font-italic mb-1 dashp">Algal Carbon Capturing Tool.</p>
+    </div>
+  </div>
+
+  <div class="bg-light py-5" id="graphs">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col">
+          <h2 >Graphs</h2>
+          <p class="font-italic">Following graphs are the graphical view of data collected by the sensors</p>
+        </div>
+      </div>
+      <div class="row mb-5 justify-content-center">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;"> 
+          <div class="card">
+            <div class="card-header float-left"><b>Graph 1:</b> Humidity</div> 
+            <!-- iframe width="540" height="260" -->
+          <iframe width="445" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/1510102/charts/1?bgcolor=%23ffffff&color=%23ffff00&dynamic=true&results=10&title=Humidity&type=line"></iframe>
+          </div>
+        </div>
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header"><b>Graph 2:</b> Water Temperature</div>
+            <iframe width="445" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/2?bgcolor=%23ffffff&color=%232596be&dynamic=true&results=10&title=Water+Temperature&type=line"></iframe>
+          </div>
+        </div>
+      </div>
+        
+      <!-- next row -->
+      <div class="row mb-5 justify-content-center">
+        <div class="col-xs-5" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header float-left"><b>Graph 3:</b> Room Temperature</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc; align-items: center;"
+              src="https://thingspeak.com/channels/1510102/charts/3?bgcolor=%23ffffff&color=%23e83845&dynamic=true&results=10&title=Room+Temperature&type=line"></iframe>
+
+          </div>
+        </div>
+        <div class="col-xs-5" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header"><b>Graph 4:</b> Light Intensity</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/4?bgcolor=%23ffffff&color=%23eb96eb&dynamic=true&results=10&title=Light+Intensity&type=line"></iframe>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- next row -->
+      <div class="row justify-content-center">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header float-center"><b>Graph 5:</b> Turbidity</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/5?bgcolor=%23ffffff&color=%23808080&dynamic=true&results=10&title=Turbidity&type=line"></iframe>
+          </div>
+        </div>
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header"><b>Graph 6:</b> Concentration</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/6?bgcolor=%23ffffff&color=%23299438&dynamic=true&results=10&title=Concentration&type=line"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- next row -->
+      <div class="row justify-content-center">
+        <div class="col-xs" style="padding-left: 15px; padding-right: 15px;">
+          <div class="card">
+            <div class="card-header"><b>Graph 7:</b> pH level</div>
+            <iframe width="440" height="260" style="border: 1px solid #cccccc;"
+              src="https://thingspeak.com/channels/1510102/charts/7?bgcolor=%23ffffff&color=%23323232&dynamic=true&results=10&title=pH+Level&type=line"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-light py-5" id="control">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col">
+          <h2>Control</h2>
+          <p class="font-italic">Select Actuator by using the dropdown below</p>
+        </div>
+      </div>
+      <div>
+        <span><b>Operational Control: </b></span>
+        <div class="row">
+          <div class="col-sm-8">
+              <select id="algae" class="form-control algae" aria-label="Default select example">
+              <option selected>Select Algae...</option>
+              <option value="0">Spirulina</option>
+              <option value="1">Ellipsoidea</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" id="confirm" class="buttonON float-center" >Confirm</button>
+          </div>
+        </div>
+        <br>
+        <span><b>Actuator Control: </b></span>
+        <div class="row">
+          <div class="col-sm-6">
+            <select id="fields" class="form-control" aria-label="Default select example">
+              <option selected>Select Actuator...</option>
+              <option value="1">Solenoid Water Source</option>
+              <option value="2">Solenoid Harvesting</option>
+              <option value="3">Solenoid Sprinkler</option>
+              <option value="4">Water Pump Water Source</option>
+              <option value="5">Light Panel</option>
+            </select>
+          </div>
+          <div class="col-sm-2 float-right">
+            <button type="button" id="relayon" class="buttonON float-right" >ON</button>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" id="relayoff" class="buttonOFF" >OFF</button>
+          </div>
+          <div class="col-sm-2">
+            <b>Status:&nbsp;<span id="relaystate">Please wait...</span></b>
+          </div>
+      </div>
+  <footer class="bg-light pb-5">
+    <div class="container text-center">
+      <img src="/Images/falcalogo (Custom).png">
+      <p class="font-italic text-muted mb-0">&copy; Team ACCT </p>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+      // Delayed Modal Display + Cookie On Click
+      $(document).ready(function() {
+  
+  // If no cookie with our chosen name (e.g. no_thanks)...
+  if ($.cookie("no_thanks") == null) {
+
+    // Show the modal, with delay func.
+    $('#myModal').appendTo("body");
+    function show_modal(){
+      $('#myModal').modal('show');
+    }
+
+    // Set delay func. time in milliseconds
+    window.setTimeout(show_modal, 3000);
+    }
+
+  // On click of specified class (e.g. 'nothanks'), trigger cookie, which expires in 100 years
+  $(".nothanks").click(function() {
+    $.cookie('no_thanks', 'true', { expires: 36500, path: '/' });
+  });
+});
+
+    document.getElementById('confirm').addEventListener('click', function() {
+				var algae = document.getElementById('algae').value;
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field6="+ algae
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+			});
+
+    document.getElementById('relayon').addEventListener('click', function() {
+				var fields = document.getElementById('fields').value;
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=1"
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+			});
+		
+		document.getElementById('relayoff').addEventListener('click', function() {
+				var fields = document.getElementById('fields').value;
+				var url = "https://api.thingspeak.com/update?api_key=CTU5MR5NY2R41PAQ&field"+ fields +"=0"
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+			});
+			
+			setInterval(function() {
+			// Call a function repetatively with 15 Second interval
+				getThingSpeakLightState();
+			}, 2000);
+			
+			function getThingSpeakLightState() {
+				var fields = document.getElementById('fields').value;
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var myObj = JSON.parse(this.responseText);
+            var newObj = obj = Object.values(myObj)[2];
+						if (newObj== "1") {
+							document.getElementById("relaystate").innerHTML = "ON";
+						}
+						else {
+							document.getElementById("relaystate").innerHTML = "OFF";
+						}
+					}
+				};
+				xhttp.open("GET", "https://api.thingspeak.com/channels/1690323/fields/"+ fields +"/last.json", true);
+				xhttp.send();
+			}
+  </script> 
+
+</body>
+
+</html>
